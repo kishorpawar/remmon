@@ -18,15 +18,28 @@ from django.contrib import admin
 
 from rest_framework import routers
 
-from servers.views import HomeView, EnrollView, ServerViewSet
+from servers import views
+
 
 router = routers.DefaultRouter()
 
-router.register(r'servers', ServerViewSet)
+router.register(r'servers', views.ServerViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeView.as_view(), name='home'),
-    url(r'enroll/server/$', EnrollView.as_view(), name='enroll-server'),
+    url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'enroll/server/$', views.EnrollView.as_view(), name='enroll-server'),
     url(r'^', include(router.urls)),
+
+    url(r'^server/uptime/$', views.uptime, name='uptime'),
+    url(r'^server/memory/$', views.memusage, name='memusage'),
+    url(r'^server/cpuusage/$', views.cpuusage, name='cpuusage'),
+    url(r'^server/getdisk/$', views.getdisk, name='getdisk'),
+    url(r'^server/getusers/$', views.getusers, name='getusers'),
+    url(r'^server/getips/$', views.getips, name='getips'),
+    url(r'^server/gettraffic/$', views.gettraffic, name='gettraffic'),
+    url(r'^server/proc/$', views.getproc, name='getproc'),
+    url(r'^server/getdiskio/$', views.getdiskio, name='getdiskio'),
+    url(r'^server/getcpus/([\w\-\.]+)/$', views.getcpus, name='getcpus'),
+    url(r'^server/getnetstat/$', views.getnetstat, name='getnetstat'),
 ]

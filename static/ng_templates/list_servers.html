@@ -16,7 +16,7 @@
                         <p>{{ server.ip_add }}:{{server.port}} <br>
                             {{ server.enrolled_on }}
                         </p>
-                        <a href="#!" class="secondary-content">
+                        <a ui-sref="details({ip:server.ip_add})" class="secondary-content">
                             <i class="material-icons">send</i>
                         </a>
                     </li>

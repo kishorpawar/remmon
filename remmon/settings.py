@@ -25,7 +25,7 @@ SECRET_KEY = 'kcgi6nnzrr*z4_%08558lxci)+8ew7*qn(kcafk@xml$j&jp4v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

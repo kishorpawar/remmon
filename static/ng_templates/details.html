@@ -1,0 +1,86 @@
+<div id="main" ng-init=>
+    <div class="wrapper">
+        <section id="content">
+            <nav>
+                <div class="nav-wrapper center-align">
+                  <div class="col s12">
+                    <a class="breadcrumb">Server Details</a>
+                  </div>
+                </div>
+              </nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                      <ul class="tabs">
+                        <li class="tab col s1"><a href="#general">General</a></li>
+                        <li class="tab col s1" ng-click=getDisk()><a href="#disk">Disk</a></li>
+                        <li class="tab col s1" ng-click=getUsers()><a href="#users">Users</a></li>
+                        <li class="tab col s1" ng-click=getMemUsage()><a href="#ram">RAM</a></li>
+                        <li class="tab col s1" ng-click=cpuUsage()><a href="#cpu">CPU</a></li>
+                        <li class="tab col s1" ng-click=traffic_usage()><a href="#network">Network</a></li>
+                        <li class="tab col s1" ng-click=getNetstat()><a href="#netstat">Netstat</a></li>
+                        <li class="tab col s1" ng-click=getProc()><a href="#processes">Processes</a></li>
+                      </ul>
+                    </div>
+                    <div id="general" class="col s12">Test 1</div>
+                    <div id="disk" class="col s12">
+                        <div class="widget-content">
+                            <table id="get_disk" class="table table-hover table-condensed   table-bordered" >
+                            </table>
+                        </div>
+                    </div>
+                    <div id="users" class="col s12">
+                        <table id="get_users" class="table table-hover table-condensed table-bordered">
+                        </table>
+                    </div>
+                    <div id="ram" class="col s12">
+                        <div class="widget-content">
+                            <p></p>
+                            <canvas id="memoryChart" width="560" height="200"></canvas>
+                            <div>
+                                <span class="memf">Free</span>
+                                <span class="memu">Used</span>
+                                <span class="memb">Buffers</span>
+                                <span class="memc">Cached</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cpu" class="col s12">
+                        <div class="widget-content">
+                            <p></p>
+                            <canvas id="cpuuChart" width="270" height="180"></canvas>
+                            <div>
+                                <span class="cpuf">Free</span>
+                                <span class="cpuu">Used</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="network" class="col s12">
+                        <div class="widget-content">
+                            <p></p>
+                            <canvas id="trfChart" width="270" height="200"></canvas>
+                            <div>
+                                <span class="netin">In</span>
+                                <span class="netout">Out</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id='netstat' class="col s12">
+                        <table id="get_netstat" class="table table-hover table-condensed table-bordered">
+                        </table>
+                    </div>
+                    <div id="processes" class="col s12">
+                        <table id="get_proc" class="table table-hover table-condensed table-bordered">
+                        </table>
+                    </div>
+                  </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('ul.tabs').tabs();
+    });
+</script>
