@@ -24,8 +24,8 @@ app.controller("ListServers", ['$rootScope', '$scope', '$http', '$state',
 					type : 'success',
 					confirmButtonText: "OK",
 					},function(){
-						console.log("REDIRECTING")
-						$state.go('/');
+						console.log("REDIRECTING");
+						$state.go('list');
 					});
 			},
 			function error(error){
@@ -50,12 +50,14 @@ app.controller("ListServers", ['$rootScope', '$scope', '$http', '$state',
 app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
 	function($rootScope, $scope, $http, $stateParams){
 
+		$scope.ip_add = $stateParams.ip
 
 		// GET DISK INFO
 		$scope.getDisk = function () {
 		    $http({
 		    	method : 'get',
 		    	url : 'server/getdisk/',
+		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function (data) {
 		    	$scope.destroy_dataTable("get_disk");
@@ -90,6 +92,7 @@ app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
 			$http({
 		    	method : 'get',
 		    	url : 'server/getusers/',
+		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function (data) {
 		        $scope.destroy_dataTable("get_users");
@@ -126,6 +129,7 @@ app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
 			$http({
 		    	method : 'get',
 		    	url : 'server/getnetstat/',
+		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function (result) {
 		        $scope.destroy_dataTable("get_netstat");
@@ -162,6 +166,7 @@ app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
         	$http({
 		    	method : 'get',
 		    	url : 'server/memory/',
+		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function(result) {
                 var options = {
@@ -182,6 +187,7 @@ app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
         	$http({
 		    	method : 'get',
 		    	url : 'server/cpuusage/',
+		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function(result) {
                 var options = {
@@ -202,6 +208,7 @@ app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
         	$http({
 		    	method : 'get',
 		    	url : 'server/gettraffic/',
+		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function(result) {
 		    	var options = {
@@ -220,6 +227,7 @@ app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
         	$http({
 		    	method : 'get',
 		    	url : 'server/proc/',
+		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function(result) {
 		    	destroy_dataTable("get_proc");

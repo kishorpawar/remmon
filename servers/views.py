@@ -130,8 +130,9 @@ def getdisk(request):
     """
     Return the disk usage
     """
+    ip_add = request.GET.get('ip_add')
     try:
-        diskusage = get_disk('192.168.0.243')
+        diskusage = get_disk(ip_add)
     except Exception:
         diskusage = None
 
@@ -146,8 +147,11 @@ def getips(request):
     """
     Return the IPs and interfaces
     """
+    
+    ip_add = request.GET.get('ip_add')
+
     try:
-        get_ips = get_ipaddress()
+        get_ips = get_ipaddress(ip_add)
     except Exception:
         get_ips = None
 
@@ -162,8 +166,10 @@ def getusers(request):
     """
     Return online users
     """
+    ip_add = request.GET.get('ip_add')
+
     try:
-        online_users = get_users('192.168.0.243')
+        online_users = get_users(ip_add)
     except Exception:
         online_users = None
 
@@ -178,8 +184,10 @@ def getproc(request):
     """
     Return the running processes
     """
+    ip_add = request.GET.get('ip_add')
+
     try:
-        processes = get_cpu_usage('192.168.0.243')
+        processes = get_cpu_usage(ip_add)
         processes = processes['all']
     except Exception:
         processes = None
@@ -195,8 +203,10 @@ def cpuusage(request):
     """
     Return CPU Usage in %
     """
+    ip_add = request.GET.get('ip_add')
+
     try:
-        cpu_usage = get_cpu_usage('192.168.0.243')
+        cpu_usage = get_cpu_usage(ip_add)
     except Exception as e:
         cpu_usage = 0
 
@@ -226,9 +236,10 @@ def memusage(request):
     datasets_used = []
     datasets_buffers = []
     datasets_cached = []
+    ip_add = request.GET.get('ip_add')
 
     try:
-        mem_usage = get_mem('192.168.0.243')
+        mem_usage = get_mem(ip_add)
     except Exception as e:
         mem_usage = 0
 
@@ -349,12 +360,13 @@ def gettraffic(request):
     datasets_out = []
     datasets_out_o = []
     label = "KBps"
+    ip_add = request.GET.get('ip_add')
 
     try:
-        intf = get_ipaddress('192.168.0.243')
+        intf = get_ipaddress(ip_add)
         intf = intf['interface'][0]
 
-        traffic = get_traffic('192.168.0.243', intf)
+        traffic = get_traffic(ip_add, intf)
     except Exception as e:
     	traffic = 0
 
@@ -470,9 +482,10 @@ def getdiskio(request):
     datasets_in_i = []
     datasets_out = []
     datasets_out_o = []
+    ip_add = request.GET.get('ip_add')
 
     try:
-        diskrw = get_disk_rw()
+        diskrw = get_disk_rw(ip_add)
         diskrw = diskrw[0]
     except Exception:
         diskrw = 0

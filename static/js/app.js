@@ -18,7 +18,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         $urlRouterProvider.otherwise("/");
 
         $stateProvider
-        	.state("/", {
+        	.state("list", {
                 url: "/",
                 templateUrl: "/static/ng_templates/list_servers.html",
                 controller: 'ListServers'
