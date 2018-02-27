@@ -230,7 +230,7 @@ app.controller("Details", ["$rootScope", '$scope', "$http", '$stateParams',
 		    	params : { ip_add : $scope.ip_add }
 		    })
 		    .then(function(result) {
-		    	destroy_dataTable("get_proc");
+		    	$scope.destroy_dataTable("get_proc");
 		        var $filterPs = $("#filter-ps");
 		        $filterPs.val("").off("keyup");
 		        var psTable = $("#get_proc").dataTable({
