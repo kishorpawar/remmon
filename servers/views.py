@@ -70,8 +70,10 @@ def getnetstat(request):
     """
     Return netstat output
     """
+    ip_add = request.GET.get('ip_add')
+
     try:
-        net_stat = get_netstat('192.168.0.243')
+        net_stat = get_netstat(ip_add)
     except Exception:
         net_stat = None
 
@@ -86,7 +88,8 @@ def getcpus(request, name):
     """
     Return the CPU number and type/model
     """
-    cpus = get_cpus()
+    ip_add = request.GET.get('ip_add')
+    cpus = get_cpus(ip_add)
     cputype = cpus['type']
     cpucount = cpus['cpus']
     data = {}
@@ -114,8 +117,11 @@ def uptime(request):
     """
     Return uptime
     """
+
+    ip_add = request.GET.get('ip_add')
+
     try:
-        up_time = get_uptime()
+        up_time = get_uptime(ip_add)
     except Exception:
         up_time = None
 
