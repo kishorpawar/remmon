@@ -13,7 +13,7 @@ import json
 from datetime import timedelta
 import multiprocessing
 
-from models import Server
+from servers.models import Server
 
 from servers.serializers import ServerSerializer
 
