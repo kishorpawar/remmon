@@ -9,7 +9,7 @@ class SSH:
         # getting credentials from db
         server = Server.objects.get(ip_add=ip_add)
         # Let the user know we're connecting to the server
-        print "Connecting to server."
+        print ("Connecting to server.")
         # Create a new SSH client
         self.client = client.SSHClient()
         # The following line is required if you want the script to be able to access a server that's not yet in the known_hosts file
